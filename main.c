@@ -48,7 +48,14 @@ int main(void) {
                 printTelescopeMenu();
                 break;
             } case 0: {
-                break;  
+                choice = -1;
+                printf("Are you sure you want to exit the application? (Enter '0' to confirm): ");
+                scanf("%d", &choice);
+                if (choice == 0) {
+                    break;
+                } else {
+                    break;
+                } 
             } default: {
                 printf("\nYou entered an incorrect choice. Try again.\n\n");
                 break;
