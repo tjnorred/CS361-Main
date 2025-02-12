@@ -15,5 +15,7 @@ void printMeteorMenu();
 void printTelescopeMenu();
 void printPlanetData(struct Planet planet);
 void printCalculationMenu(struct Planet planet);
+void printPlanetaryCalculator();
+void printRelativeSizeCalcMenu();
 
 #endif

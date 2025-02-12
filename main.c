@@ -17,7 +17,7 @@ int main(void) {
 
     do {
 
-        printf("1.) Planets            5.) Asteroids\n2.) Moons              6.) Comets\n3.) Dwarf Planets      7.) Meteors\n4.) The Sun            8.) Telescopes\n");
+        printf("1.) Planets            5.) Asteroids            9.) Planetary Calculator\n2.) Moons              6.) Comets\n3.) Dwarf Planets      7.) Meteors\n4.) The Sun            8.) Telescopes\n");
         printf("             0.) Exit\n");
         printf("Choose an option: ");
         scanf("%d", &choice);
@@ -46,6 +46,9 @@ int main(void) {
                 break;
             } case 8: { // telescopes
                 printTelescopeMenu();
+                break;
+            } case 9: { // calculator
+                printPlanetaryCalculator();
                 break;
             } case 0: {
                 choice = -1;
