@@ -1,4 +1,4 @@
 #include <stdio.h>
-#include "planet.h"
+#include "../include/planet.h"
 
 // define functions in this file

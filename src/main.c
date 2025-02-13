@@ -8,7 +8,7 @@
 **************************************************/
 
 #include <stdio.h>
-#include "menu.h"
+#include "../include/menu.h"
 
 int main(void) {
     int choice;
@@ -17,8 +17,9 @@ int main(void) {
 
     do {
 
-        printf("1.) Planets            5.) Asteroids            9.) Planetary Calculator\n2.) Moons              6.) Comets\n3.) Dwarf Planets      7.) Meteors\n4.) The Sun            8.) Telescopes\n");
-        printf("             0.) Exit\n");
+        printf("Enter the number for the category you wish to explore.\n");
+        printf("1.) Planets            5.) Asteroids            9.) Planetary Calculator\n2.) Moons              6.) Comets\n3.) Dwarf Planets      7.) Meteors\n4.) The Sun            8.) Telescopes");
+        printf("           0.) Exit\n");
         printf("Choose an option: ");
         scanf("%d", &choice);
 

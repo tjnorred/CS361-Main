@@ -1,4 +1,4 @@
 #include <stdio.h>
-#include "moon.h"
+#include "../include/moon.h"
 
 // define functions in this file

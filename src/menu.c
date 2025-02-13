@@ -8,18 +8,19 @@
  **************************************************/
 
 #include <stdio.h>
-#include "menu.h"
+#include "../include/menu.h"
 
 void printGreeting() {
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-    printf("Welcome to Space Explorer!\n");
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
+    printf("  *   .     *     .\n   .   *   .   *\n  *     .   *     .\n   .   *   .   *\n");
+    printf("   Space Explorer\n");
+    printf("   ----------------\n");
+    printf(" Explore the Universe!\n\n");
 }
 
 void printGoodbye() {
-    printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-    printf("Goodbye!\n");
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("\n----------------\n");
+    printf("\nGoodbye!\n\n");
+    printf("----------------\n\n");
 }
 
 void printPlanetMenu()
@@ -27,10 +28,10 @@ void printPlanetMenu()
     int planetChoice;
     do
     {
-        printf("\nExplore the universe!  Enter the number for the category you wish to explore.\n");
-        printf("1.) Mercury     5.) Jupiter\n2.) Venus       6.) Saturn\n3.) Earth       7.) Uranus\n4.) Mars        8.) Neptune\n");
-        printf("      0.) Main Menu\n");
-        printf("Select a planet to learn more: ");
+        printf("Enter the number for the planet you wish to explore.\n");
+        printf("1.) Mercury     5.) Jupiter\n2.) Venus       6.) Saturn\n3.) Earth       7.) Uranus\n4.) Mars        8.) Neptune");
+        printf("     0.) Main Menu\n");
+        printf("Enter your choice: ");
         scanf("%d", &planetChoice);
 
         switch (planetChoice)
@@ -41,6 +42,7 @@ void printPlanetMenu()
             mercury.name = "Mercury";
             mercury.description = "The smallest planet in our solar system and nearest to the Sun, Mercury is only slightly larger than Earth's Moon. From the surface of Mercury, the Sun would appear more than three times as large as it does when viewed from Earth, and the sunlight would be as much as seven times brighter.";
             mercury.radius = 2440;
+            mercury.diameter = mercury.radius * 2;
             mercury.distanceFromSun = 0.4;
             mercury.distanceFromEarth = 0.6;
             mercury.orbit = 88;
@@ -59,6 +61,7 @@ void printPlanetMenu()
             venus.name = "Venus";
             venus.description = "Venus is the second planet from the Sun, and our closest planetary neighbor. It's the hottest planet in our solar system, and is sometimes called Earth's twin.";
             venus.radius = 6052;
+            venus.diameter = venus.radius * 2;
             venus.distanceFromSun = 0.72;
             venus.distanceFromEarth = 0.28;
             venus.orbit = 225;
@@ -77,6 +80,7 @@ void printPlanetMenu()
             earth.name = "Earth";
             earth.description = "Earth - our home planet - is the third planet from the Sun, and the fifth largest planet. It's the only place we know of inhabited by living things.";
             earth.radius = 6371;
+            earth.diameter = earth.radius * 2;
             earth.distanceFromSun = 1;
             earth.distanceFromEarth = 0;
             earth.orbit = 365;
@@ -95,6 +99,7 @@ void printPlanetMenu()
             mars.name = "Mars";
             mars.description = "Mars, the fourth planet from the Sun, is a dusty, cold, desert world with a very thin atmosphere. This dynamic planet has seasons, polar ice caps, extinct volcanoes, canyons and weather.";
             mars.radius = 3390;
+            mars.diameter = mars.radius * 2;
             mars.distanceFromSun = 1.5;
             mars.distanceFromEarth = 0.5;
             mars.orbit = 687;
@@ -113,6 +118,7 @@ void printPlanetMenu()
             jupiter.name = "Jupiter";
             jupiter.description = "Jupiter is a world of extremes. It's the largest planet in our solar system - if it were a hollow shell, 1,000 Earths could fit inside. It's also the oldest planet, forming from the dust and gases left over from the Sun's formation 4.6 billion years ago.";
             jupiter.radius = 69911;
+            jupiter.diameter = jupiter.radius * 2;
             jupiter.distanceFromSun = 5.2;
             jupiter.distanceFromEarth = 4.2;
             jupiter.orbit = 4333;
@@ -131,6 +137,7 @@ void printPlanetMenu()
             saturn.name = "Saturn";
             saturn.description = "Like fellow gas giant Jupiter, Saturn is a massive ball made mostly of hydrogen and helium. Saturn is not the only planet to have rings, but none are as spectacular or as complex as Saturn's. Saturn also has dozens of moons.";
             saturn.radius = 58232;
+            saturn.diameter = saturn.radius * 2;
             saturn.distanceFromSun = 9.5;
             saturn.distanceFromEarth = 8.5;
             saturn.orbit = 10755;
@@ -149,6 +156,7 @@ void printPlanetMenu()
             uranus.name = "Uranus";
             uranus.description = "Uranus is the seventh planet from the Sun, and it has the third largest diameter of planets in our solar system. Uranus appears to spin sideways.";
             uranus.radius = 25362;
+            uranus.diameter = uranus.radius * 2;
             uranus.distanceFromSun = 19.0;
             uranus.distanceFromEarth = 18.0;
             uranus.orbit = 30687;
@@ -167,6 +175,7 @@ void printPlanetMenu()
             neptune.name = "Neptune";
             neptune.description = "Dark, cold, and whipped by supersonic winds, ice giant Neptune is more than 30 times as far from the Sun as Earth. Neptune is the only planet in our solar system not visible to the naked eye. In 2011 Neptune completed its first 165-year orbit since its discovery in 1846.";
             neptune.radius = 24622;
+            neptune.diameter = neptune.radius * 2;
             neptune.distanceFromSun = 30.0;
             neptune.distanceFromEarth = 29.0;
             neptune.orbit = 60190;
@@ -194,25 +203,28 @@ void printPlanetMenu()
 
 void printPlanetData(struct Planet planet)
 {
-    printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("\n----------------\n");
     printf("%s\n", planet.name);
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-    printf("Description:\n\n");
-    printf("%s\n", planet.description);
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-    printf("Size and Distance:\n\n");
-    printf("Dist. from the Sun: %.1f AU    Radius: %d km\nDist. from Earth: %.1f AU\n", planet.distanceFromSun, planet.radius, planet.distanceFromEarth);
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-    printf("Orbit and Rotation:\n\n");
-    printf("Orbit: %d Earth days\nRotation: %.1f hours\n", planet.orbit, planet.hoursInSolarDay);
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-    printf("Atmosphere:\n\n");
-    printf("%s\n", planet.composition);
-    printf("Temperature: %d - %d C\n", planet.lowTemp, planet.highTemp);
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-    printf("Magnetosphere:\n\n");
-    printf("%s\n", planet.magnetosphere);
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
+    printf("----------------\n\n");
+    printf("Description:\n");
+    printf("----------------\n");
+    printf("%s\n\n", planet.description);
+    printf("Size and Distance:\n");
+    printf("----------------\n");
+    printf("Diameter: %d km   Dist. from the Sun: %.1f AU\n", planet.diameter, planet.distanceFromSun);
+    printf("Radius:   %d km   Dist. from Earth:   %.1f AU\n\n", planet.radius, planet.distanceFromEarth);
+    printf("Orbit and Rotation:\n");
+    printf("----------------\n");
+    printf("Orbit: %d Earth days\nRotation: %.1f hours\n\n", planet.orbit, planet.hoursInSolarDay);
+    printf("Atmosphere:\n");
+    printf("----------------\n");
+    printf("%s\n\n", planet.composition);
+    printf("Temperature: (Low - High)\n");
+    printf("----------------\n");
+    printf("%d C - %d C\n\n", planet.lowTemp, planet.highTemp);
+    printf("Magnetosphere:\n");
+    printf("----------------\n");
+    printf("%s\n\n", planet.magnetosphere);
 
     printCalculationMenu(planet);
 }
@@ -223,7 +235,7 @@ void printCalculationMenu(struct Planet planet)
     do
     {
         printf("Please make a selection\n");
-        printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+        printf("----------------\n");
         printf("Calculate %s's: 1.) Relative Size  2.) Surface Gravity  3.) Travel Time\n4.) More Details 0.) Return\n", planet.name);
         printf("Enter your choice: ");
         scanf("%d", &choice);
@@ -231,33 +243,35 @@ void printCalculationMenu(struct Planet planet)
         {
         case 1:
         {
-            printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("\n----------------\n");
             printf("Coming Soon!\n");
-            printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("----------------\n");
             break;
         }
         case 2:
         {
-            printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("\n----------------\n");
             printf("Coming Soon!\n");
-            printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("----------------\n");
             break;
         }
         case 3:
         {
-            printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("\n----------------\n");
             printf("Coming Soon!\n");
-            printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("----------------\n");
             break;
         }
         case 4:
         {
-            printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-            printf("Details:\n\n");
-            printf("\n1.) Relative Size: Calculates and displays the size of the selected planet relative to Earth.\n\n");
+            printf("\nDetails:\n");
+            printf("----------------\n\n");
+            printf("1.) Relative Size: Calculates and displays the size of the selected planet relative to Earth.\n\n");
             printf("2.) Surface Gravity: Calculates the surface gravity of a planet or moon based on its mass and radius.\n\n");
-            printf("3.) Travel Time: calculates the estimated travel time to a planet.\n\n");
-            printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("3.) Travel Time: Calculates the estimated travel time to a planet.\n\n");
+            printf("4.) Escape Velocity: Calculates how much force is necessary for an object to leave the planet's obit.\n\n");
+            printf("5.) Absolute Magnitude: Calculates the luminosity of a planet.\n\n");
+            printf("6.) Apparent Magnitude: Calculates the brightness of a planet.\n\n");
             break;
         }
         case 0:
@@ -274,64 +288,65 @@ void printCalculationMenu(struct Planet planet)
 }
 
 void printMoonMenu() {
-    printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("\n----------------\n");
     printf("Coming Soon!\n");
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("----------------\n");
 
 }
 
 void printDwarfPlanetMenu() {
-    printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("\n----------------\n");
     printf("Coming Soon!\n");
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("----------------\n");
 }
 
 void printSunMenu() {
-    printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("\n----------------\n");
     printf("The Sun\n");
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("----------------\n");
     printf("Length of day: 25 Earth days at the equator and 36 Earth days at the poles.\n");
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("----------------\n");
     printf("Length of year: The Sun doesn't have a “year,” per se. But the Sun orbits the center of the Milky Way about every 230 million Earth years, bringing the planets, asteroids, comets, and other objects with it.\n");
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("----------------\n");
     printf("Star type: G2 V, yellow dwarf main-sequence star\nSurface temperature: (Photosphere) 10,000 degrees Fahrenheit (5,500 degrees Celsius)\nCorona (solar atmosphere) temperature: Up to 3.5 million °F (2 million °C)\n");
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("----------------\n");
 }
 
 void printAsteroidMenu() {
-    printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("\n----------------\n");
     printf("Coming Soon!\n");
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("----------------\n");
 }
 
 void printCometMenu() {
-    printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("\n----------------\n");
     printf("Coming Soon!\n");
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("----------------\n");
 }
 
 void printMeteorMenu() {
-    printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("\n----------------\n");
     printf("Coming Soon!\n");
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("----------------\n");
 }
 
 void printTelescopeMenu() {
-    printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("\n----------------\n");
     printf("Coming Soon!\n");
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("----------------\n");
 }
 
 void printPlanetaryCalculator() {
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-    printf("Welcome to the Planetary Calculator!\n");
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
+    printf("\nPlanetary Calculator\n");
+    printf("----------------\n\n");
     printf("Enter the number for the calculation you wish to make.\n\n");
 
     int choice;
     do {
-        printf("1.) Relative Size    3.) Travel Time      5.) Absolute Magnitude  9.) More Details\n");
-        printf("2.) Surface Gravity  4.) Escape Velocity  6.) Apparent Magnitude  0.) Main Menu\n");
+        printf("1.) Relative Size    4.) Escape Velocity\n");
+        printf("2.) Surface Gravity  5.) Absolute Magnitude  9.) More Details\n");
+        printf("3.) Travel Time      6.) Apparent Magnitude");
+        printf("  0.) Main Menu\n");
         printf("Enter a valid number for a calculator (or '0' to return): ");
         scanf("%d", &choice);
 
@@ -341,32 +356,32 @@ void printPlanetaryCalculator() {
             printRelativeSizeCalcMenu();
             break;
         } case 2: {
-            printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("\n----------------\n");
             printf("Coming Soon!\n");
-            printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("----------------\n");
             break;
         } case 3: {
-            printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("\n----------------\n");
             printf("Coming Soon!\n");
-            printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("----------------\n");
             break;
         } case 4: {
-            printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("\n----------------\n");
             printf("Coming Soon!\n");
-            printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("----------------\n");
             break;
         } case 5: {
-            printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("\n----------------\n");
             printf("Coming Soon!\n");
-            printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("----------------\n");
             break;
         } case 6: {
-            printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("\n----------------\n");
             printf("Coming Soon!\n");
-            printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("----------------\n");
             break;
         } case 9: {
-            printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("----------------\n");
             printf("Details:\n\n");
             printf("\n1.) Relative Size: Calculates and displays the size of the selected planet relative to Earth.\n\n");
             printf("2.) Surface Gravity: Calculates the surface gravity of a planet or moon based on its mass and radius.\n\n");
@@ -374,7 +389,7 @@ void printPlanetaryCalculator() {
             printf("4.) Escape Velocity: .\n\n");
             printf("5.) Absolute Magnitude: .\n\n");
             printf("6.) Apparent Magnitude: .\n\n");
-            printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("----------------\n");
             break;
         } case 0: {
             printf("\n");
@@ -389,9 +404,9 @@ void printPlanetaryCalculator() {
 }
 
 void printRelativeSizeCalcMenu() {
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf("----------------\n");
     printf("Relative Size Calculator\n");
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
+    printf("----------------\n\n");
     printf("Choose a planet to compare its size to Earth or provide custom inputs for comparison.\n\n");
 
     int choice;
@@ -405,39 +420,39 @@ void printRelativeSizeCalcMenu() {
         switch (choice)
         {
         case 1: {
-            printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("\n----------------\n");
             printf("Coming Soon!\n");
-            printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("----------------\n");
             break;
         } case 2: {
-            printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("\n----------------\n");
             printf("Coming Soon!\n");
-            printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("----------------\n");
             break;
         } case 3: {
-            printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("\n----------------\n");
             printf("Coming Soon!\n");
-            printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("----------------\n");
             break;
         } case 4: {
-            printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("\n----------------\n");
             printf("Coming Soon!\n");
-            printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("----------------\n");
             break;
         } case 5: {
-            printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("\n----------------\n");
             printf("Coming Soon!\n");
-            printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("----------------\n");
             break;
         } case 6: {
-            printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("\n----------------\n");
             printf("Coming Soon!\n");
-            printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("----------------\n");
             break;
         } case 7: {
-            printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("\n----------------\n");
             printf("Coming Soon!\n");
-            printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("----------------\n");
             break;
         } case 8: {
             float objectA;
@@ -471,7 +486,7 @@ void printRelativeSizeCalcMenu() {
             } while (exit != 1);
             break;
         } case 9: {
-            printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("----------------\n");
             printf("Details:\n\n");
             printf("\n1.) Relative Size: Calculates and displays the size of the selected planet relative to Earth.\n\n");
             printf("2.) Surface Gravity: Calculates the surface gravity of a planet or moon based on its mass and radius.\n\n");
@@ -479,7 +494,7 @@ void printRelativeSizeCalcMenu() {
             printf("4.) Escape Velocity: .\n\n");
             printf("5.) Absolute Magnitude: .\n\n");
             printf("6.) Apparent Magnitude: .\n\n");
-            printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            printf("----------------\n");
             break;
         } case 0: {
             printf("\n");

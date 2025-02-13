@@ -1,19 +1,30 @@
 CC = gcc
-CFLAGS = -Wall -Wextra
+CFLAGS = -Wall -Wextra -g
 
-all: mainApp
+# Directories
+BUILD_DIR = ./build
+BIN_DIR = ./bin
+SRC_DIR = ./src
+INCLUDE_DIR = ./include
 
-mainApp: main.o menu.o planet.o
-	$(CC) main.o menu.o planet.o -o ./output/mainApp
+TARGET = $(BIN_DIR)/mainApp
 
-main.o: main.c menu.h
-	$(CC) $(CFLAGS) -c main.c
+all: $(TARGET)
 
-menu.o: menu.c menu.h planet.h
-	$(CC) $(CFLAGS) -c menu.c
+$(TARGET): $(BUILD_DIR)/main.o $(BUILD_DIR)/menu.o $(BUILD_DIR)/planet.o
+	$(CC) $(BUILD_DIR)/main.o $(BUILD_DIR)/menu.o $(BUILD_DIR)/planet.o -o $(TARGET)
 
-planet.o: planet.c planet.h
-	$(CC) $(CFLAGS) -c planet.c
+$(BUILD_DIR)/main.o: $(SRC_DIR)/main.c $(INCLUDE_DIR)/menu.h
+	$(CC) $(CFLAGS) -c $(SRC_DIR)/main.c -o $(BUILD_DIR)/main.o
+
+$(BUILD_DIR)/menu.o: $(SRC_DIR)/menu.c $(INCLUDE_DIR)/menu.h $(INCLUDE_DIR)/planet.h
+	$(CC) $(CFLAGS) -c $(SRC_DIR)/menu.c -o $(BUILD_DIR)/menu.o
+
+$(BUILD_DIR)/planet.o: $(SRC_DIR)/planet.c $(INCLUDE_DIR)/planet.h
+	$(CC) $(CFLAGS) -c $(SRC_DIR)/planet.c -o $(BUILD_DIR)/planet.o
 
 clean:
-	rm -f *.o mainApp
+	rm -f $(BUILD_DIR)/*.o
+#	rm -rf $(BUILD_DIR)  # Remove the entire build directory
+
+.PHONY: all clean
