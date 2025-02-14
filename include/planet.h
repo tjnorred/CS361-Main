@@ -40,4 +40,8 @@ struct Planet
 // declare functions in this file
 // ex: void addPlanet();
 
+void printDwarfPlanetMenu();
+void printPlanetMenu();
+void printPlanetData(struct Planet planet);
+
 #endif

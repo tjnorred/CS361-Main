@@ -21,4 +21,6 @@ struct Moon
 // declare functions in this file
 // ex: void addPlanet();
 
+void printMoonMenu();
+
 #endif
