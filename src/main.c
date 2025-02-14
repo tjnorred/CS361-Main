@@ -18,7 +18,10 @@ int main(void) {
     do {
 
         printf("Enter the number for the category you wish to explore.\n");
-        printf("1.) Planets            5.) Asteroids            9.) Planetary Calculator\n2.) Moons              6.) Comets\n3.) Dwarf Planets      7.) Meteors\n4.) The Sun            8.) Telescopes");
+        printf("1.) Planets            5.) Asteroids            9.) Planetary Calculator\n");
+        printf("2.) Dwarf Planets      6.) Comets\n");
+        printf("3.) The Moon           7.) Meteors\n");
+        printf("4.) The Sun            8.) Telescopes");
         printf("           0.) Exit\n");
         printf("Choose an option: ");
         scanf("%d", &choice);
@@ -27,11 +30,11 @@ int main(void) {
             case 1: { // planets
                 printPlanetMenu();
                 break;
-            } case 2: { // moons
-                printMoonMenu();
-                break;
-            } case 3: { //dwarf planets
+            } case 2: { //dwarf planets
                 printDwarfPlanetMenu();
+                break;
+            } case 3: { // moons
+                printMoonMenu();
                 break;
             } case 4: { // the sun
                 printSunMenu();
